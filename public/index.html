@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://dev-cdn.okra.ng/okra.css"
+    />
+
+    <title>Okra Quick Start</title>
+  </head>
+  <body>
+    <div id="okra-enabled"></div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://dev-cdn.okra.ng/okra.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        const options = {
+          idSelector: "okra-enabled",
+          token: "5d8a35224d8113507c7521ac",
+          key: "8fc1289c-9c35-59d3-8bee-6613fcdc93fd",
+          fullMessage: "Use Okra to link your bank account"
+        };
+        var client = new okra.create();
+        client.open(options);
+      });
+    </script>
+  </body>
+</html>
