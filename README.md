@@ -2,7 +2,7 @@
 
 The `okra-quick-starter` package contains only the functionality necessary for setting up the okra sandbox environment.
 
-r## Instructions How to proceed
+## Instructions How to proceed
 
 1.  Prepare your project folder
 2.  Run: `npm i okra-node` to install Okra
