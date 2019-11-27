@@ -1,6 +1,6 @@
 {
   "name": "okra-quick-starter",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "dependencies": {
     "basic-auth": "^2.0.0",
     "bootstrap": "^4.0.0",
