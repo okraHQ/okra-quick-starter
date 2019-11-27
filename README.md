@@ -2,8 +2,6 @@
 
 The `okra-quick-starter` package contains only the functionality necessary for setting up the okra sandbox environment.
 
-## Instructions How to proceed
-
 1. Fork this repository and `cd` into the root folder.
 2. Run: `npm install`
 3. Run: `npm run dev` to start the sandbox environment
