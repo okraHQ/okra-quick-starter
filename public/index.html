@@ -9,11 +9,13 @@
       type="text/css"
       href="https://dev-cdn.okra.ng/okra.css"
     />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
 
     <title>Okra Quick Start</title>
   </head>
   <body>
     <div id="okra-enabled"></div>
+    <button class="okra-button">Connect Your Bank</button>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -24,12 +26,17 @@
       $(document).ready(function() {
         const options = {
           idSelector: "okra-enabled",
-          token: "5d8a35224d8113507c7521ac",
-          key: "8fc1289c-9c35-59d3-8bee-6613fcdc93fd",
-          fullMessage: "Use Okra to link your bank account"
+          env: "production-sandbox",
+          token: "5d8a35224d8113507c7521ac", //CHANGE TO YOUR CLIENT TOKEN
+          key: "8fc1289c-9c35-59d3-8bee-6613fcdc93fd", //CHANGE TO YOU API KEY
+          clientName: "This Client", //change to your app name
+          products: '["auth", "balance", "identity", "transactions"]' //DEFAULT 'auth' 'balance' and 'identity
         };
         var client = new okra.create();
-        client.open(options);
+        $(".okra-button").click(e => {
+          e.preventDefault();
+          client.open(options);
+        });
       });
     </script>
   </body>

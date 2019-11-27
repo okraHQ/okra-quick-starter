@@ -4,8 +4,9 @@ The `okra-quick-starter` package contains only the functionality necessary for s
 
 ## Instructions How to proceed
 
-1.  Prepare your project folder
-2.  Run: `npm i okra-node` to install Okra
-3.  Run: `npm i` to install the dependencies
-4.  Run: `npm run dev` to build and watch
-5.  Run: `open http://localhost:8000` to visualize the okra sand box
+1. Fork this repository and `cd` into the root folder.
+2. Run: `npm install`
+3. Run: `npm run dev` to start the sandbox environment
+4. Start exploring the power of Okra.
+
+You can also get the `NPM` version of this project [here](https://www.npmjs.com/package/okra-quick-starter)

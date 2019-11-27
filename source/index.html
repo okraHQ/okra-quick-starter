@@ -1,15 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://dev-cdn.okra.ng/okra.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
 
-<head>
-    {{>head title=""}}
-</head>
-
-<body class='home'>
-    <div style="width:100vw; height:100vh; background-position: 50%; background-size:cover;background-image: url('https://static.pexels.com/photos/54632/cat-animal-eyes-grey-54632.jpeg')">
-        {{>header home_page=true}}
-    </div>
-    {{>scripts}}
-</body>
-
+    <title>Okra Quick Start</title>
+  </head>
+  <body>
+    <div id="okra-enabled"></div>
+    <button class="okra-button">Connect Your Bank</button>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://dev-cdn.okra.ng/okra.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        const options = {
+          idSelector: "okra-enabled",
+          env: "production-dev",
+          token: "5d8a35224d8113507c7521ac", //CHANGE TO YOUR CLIENT TOKEN
+          key: "8fc1289c-9c35-59d3-8bee-6613fcdc93fd", //CHANGE TO YOU API KEY
+          clientName: "This Client" //change to your app name
+        };
+        var client = new okra.create();
+        $(".okra-button").click(e => {
+          e.preventDefault();
+          client.open(options);
+        });
+      });
+    </script>
+  </body>
 </html>
