@@ -10,7 +10,26 @@
       href="https://dev-cdn.okra.ng/okra.css"
     />
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <style>
+      body,
+      html {
+        text-align: center;
+      }
 
+      .okra-button {
+        background: #3ab795;
+        color: white;
+        font-size: 20px;
+        border-radius: 4px;
+        padding: 10px 15px;
+        margin-top: 15%;
+        border: none;
+      }
+
+      .okra-button:hover {
+        outline: none;
+      }
+    </style>
     <title>Okra Quick Start</title>
   </head>
   <body>
@@ -29,6 +48,7 @@
           env: "production-dev",
           token: "5d8a35224d8113507c7521ac", //CHANGE TO YOUR CLIENT TOKEN
           key: "8fc1289c-9c35-59d3-8bee-6613fcdc93fd", //CHANGE TO YOU API KEY
+          products: '["auth", "balance", "identity", "transactions"]', //DEFAULT 'auth' 'balance' and 'identity
           clientName: "This Client" //change to your app name
         };
         var client = new okra.create();
