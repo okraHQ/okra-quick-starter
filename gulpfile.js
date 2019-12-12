@@ -4,9 +4,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
-const pixrem = require('pixrem');
 const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
 const browserSync = require('browser-sync').create();
 const sitemap = require('gulp-sitemap');
 const handlebars = require('gulp-compile-handlebars');
@@ -16,7 +14,6 @@ const svgstore = require('gulp-svgstore');
 const svgo = require('gulp-svgo');
 const copy = require('gulp-copy');
 const webpack = require('webpack');
-const critical = require('critical');
 const w3cjs = require('gulp-w3cjs');
 const access = require('gulp-accessibility');
 
@@ -77,42 +74,39 @@ gulp.task('webpack:prod', function (cb) {
   });
 });
 
-gulp.task('postcss:dev', function() {
+gulp.task('postcss:dev', function () {
   var processors = [
-      pixrem(),
-      autoprefixer({
-          browsers: ['last 2 versions']
-      })
+   
+    autoprefixer({
+      browsers: ['last 2 versions']
+    })
   ];
 
   return gulp.src(stylesheets)
-      .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(postcss(processors))
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(buildpath.css))
-      .pipe(browserSync.stream({
-          match: "**/*.css"
-      }));
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(buildpath.css))
+    .pipe(browserSync.stream({
+      match: "**/*.css"
+    }));
 });
 
-gulp.task('postcss:prod', function() {
-    var processors = [
-        pixrem(),
-        autoprefixer({
-            browsers: ['last 2 versions']
-        }),
-        cssnano({
-            safe: true
-        })
-    ];
+gulp.task('postcss:prod', function () {
+  var processors = [
+   
+    autoprefixer({
+      browsers: ['last 2 versions']
+    }),
+  ];
 
-    return gulp.src(stylesheets)
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(postcss(processors))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(buildpath.css))
+  return gulp.src(stylesheets)
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(buildpath.css))
 });
 
 
@@ -202,24 +196,7 @@ gulp.task('a11y', function () {
     .on('error', console.log);
 });
 
-gulp.task('critical', ['handlebars','postcss:prod'], function (cb) {
-  var files = [
-    ['index.html', 'index.html']
-  ];
-
-  files.forEach(function (filePair) {
-    critical.generate({
-      inline: true,
-      base: buildpath.main,
-      src: filePair[0],
-      dest: filePair[1],
-      minify: true,
-      width: 1440,
-      height: 700
-    });
-  });
-});
 
 gulp.task('default', ['copy', 'handlebars', 'svgstore', 'webpack', 'postcss:dev', 'browserSync', 'watch']);
-gulp.task('prod', ['copy', 'critical', 'svgstore', 'webpack:prod', 'postcss:prod']);
+gulp.task('prod', ['copy', 'svgstore', 'webpack:prod', 'postcss:prod']);
 gulp.task('test', ['w3cjs', 'a11y']);
